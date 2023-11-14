@@ -13,7 +13,7 @@ def check_wallets(wallet_type):
         addresses = read_addresses('solana.txt')
         url = 'https://airdrop.pyth.network/api/grant/v1/solana_breakdown?identity='
     else:
-        print("Неверный выбор. Пожалуйста, выберите 1 для EVM или 2 для Solana.")
+        print("Invalid choice. Please choose 1 for EVM or 2 for Solana.")
         return
 
     for address in addresses:
@@ -21,14 +21,14 @@ def check_wallets(wallet_type):
         try:
             data = response.json()
             if 'error' in data:
-                print(f"Ошибка: {data['error']} для адреса {address}")
+                print(f"Error: {data['error']} for address {address}")
             else:
-                print(f"Адрес: {address}, Данные: {json.dumps(data, indent=2)}")
+                print(f"Address: {address}, Data: {json.dumps(data, indent=2)}")
         except json.JSONDecodeError:
-            print(f"Не удалось обработать ответ для адреса {address}")
+            print(f"Failed to process response for address {address}")
 
 def main():
-    choice = int(input("Введите 1 для проверки EVM кошельков, 2 для проверки Solana кошельков: "))
+    choice = int(input("Enter 1 to check EVM wallets, 2 to check Solana wallets: "))
     check_wallets(choice)
 
 if __name__ == "__main__":
