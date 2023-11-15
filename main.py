@@ -33,6 +33,7 @@ def check_wallets(wallet_type):
 def main():
     choice = int(input("Enter 1 to check EVM wallets, 2 to check Solana wallets, 3 to check Aptos wallets: "))
     check_wallets(choice)
+    input("Press enter to exit...")
 
 if __name__ == "__main__":
     main()
